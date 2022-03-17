@@ -4,10 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [
-    './app.component.css', './layout.css', './reset.css', './responsive.css',
-    './style.css', './typography.css'
+    './app.component.css'
   ]
 })
 export class AppComponent {
-  title = 'forum-app';
+  title = 'SoftUni-Forum';
 }
