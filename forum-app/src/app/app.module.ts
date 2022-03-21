@@ -3,37 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ThemeListComponent } from './theme-list/theme-list.component';
-import { AsideComponent } from './aside/aside.component';
-import { ThemeListItemComponent } from './theme-list-item/theme-list-item.component';
-import { UserService } from './user.service';
-import { storageServiceProvider } from './storage.service';
-import { ThemeService } from './theme.service';
-import { PostService } from './post.service';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { CoreModule } from './core/core.module';
+import { ThemesModule } from './feature/themes/themes.module';
+import { RouterModule } from '@angular/router';
+import { PagesModule } from './feature/pages/pages.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    ThemeListComponent,
-    AsideComponent,
-    ThemeListItemComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
-  ],
-  providers: [
-    UserService,
-    storageServiceProvider,
-    ThemeService,
-    PostService
+    HttpClientModule,
+    CoreModule.forRoot(),
+    ThemesModule,
+    RouterModule,
+    PagesModule,
+    AppRoutingModule,
+    AuthModule
   ],
   bootstrap: [
-    AppComponent, HeaderComponent, FooterComponent
+    AppComponent, 
+    HeaderComponent, 
+    FooterComponent
   ]
 })
 export class AppModule { }
