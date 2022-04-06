@@ -69,3 +69,7 @@
 .green-button {
     background-color: green;
 }
+
+.input-error {
+    border-left: 3px solid red;
+}

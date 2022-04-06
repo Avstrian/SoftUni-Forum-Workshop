@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../interfaces';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,14 +13,9 @@ export class HeaderComponent {
     return this.userService.isLogged;
   }
 
+  get currentUser(): IUser {
+    return this.userService.currentUser
+  }
+
   constructor(public userService: UserService) { }
-
-  loginHandler(): void {
-    this.userService.login();
-  }
-
-  logoutHandler(): void {
-    this.userService.logout();
-  }
-
 }
