@@ -35,7 +35,7 @@
             </p>
         </ng-container>
 
-        <button [disabled]="loginFormGroup.invalid" >Login</button>
+        <button (click)="loginHandler()" >Login</button>
 
         <p class="text-center">
             Have an account?

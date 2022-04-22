@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CreateUserDto, UserService } from 'src/app/core/user.service';
+import { AuthService } from 'src/app/auth.service';
+import { CreateUserDto } from 'src/app/auth.service';
 import { emailValidator, passwordMatch } from '../util';
 
 @Component({
@@ -30,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) { }
   
@@ -55,7 +56,7 @@ export class RegisterComponent implements OnInit {
       body.tel = telRegion + tel;
     }
 
-    this.userService.register$(body).subscribe(() => {
+    this.authService.register$(body).subscribe(() => {
       this.router.navigate(['/home']);
     });
   }

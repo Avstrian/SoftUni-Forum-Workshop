@@ -7,6 +7,9 @@ import { UserService } from './user.service';
 import { ThemeService } from './theme.service';
 import { storageServiceProvider } from './storage.service';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { ErrorHandlerInterceptor } from './error-handler.interceptor';
 
 
 
@@ -34,7 +37,17 @@ export class CoreModule {
         PostService,
         UserService,
         ThemeService,
-        storageServiceProvider
+        storageServiceProvider,
+        {
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: AuthInterceptor,
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: ErrorHandlerInterceptor,
+        }
       ]
     }
   }
